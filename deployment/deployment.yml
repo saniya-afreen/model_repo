@@ -34,7 +34,7 @@ spec:
         app: modelinf-service
     spec:
       containers:
-      - image: modelinfservice:1.0
+      - image: modelinf-service:latest
         imagePullPolicy: IfNotPresent
         name: modelinfservice
         resources: {}
