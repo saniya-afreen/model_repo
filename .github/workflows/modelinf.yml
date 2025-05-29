@@ -1,0 +1,33 @@
+steps:
+- name: start minikube
+  id: minikube
+  uses: saniya-afreen/setup-minikube@latest
+
+name: CI
+on:
+  - pull_request
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    name: build example and deploy to minikube
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        repository: saniya-afreen/model_repo
+    - name: Start minikube
+      uses: saniya-afreen/setup-minikube@latest
+    - name: Try the cluster!
+      run: kubectl get pods -A
+    - name: Build image
+      run: |
+        minikube image build -t local/modelinfservice:1.0 .
+    - name: Deploy to minikube
+      run:
+        kubectl apply -f deployment/deployment.yaml
+        kubectl wait --for=condition=ready pod -l app=modelinf-service
+    - name: Test service URLs
+      run: |
+        minikube service list
+        minikube service modelinf-service-svc --url
+        echo "------------------opening the service------------------"
+        curl $(minikube service modelinf-service-svc --url)
