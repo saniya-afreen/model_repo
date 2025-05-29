@@ -18,9 +18,11 @@ jobs:
         docker build -f ./ModelInfService/Dockerfile -t saniya-afree/modelinf-service:latest .
         echo -n "verifying images:"
         docker images
-    - name: Deploy to minikube
+    - name: Deploy Pods to minikube
       run:
         kubectl apply -f deployment/deployment.yaml
+    - name: Deploy Service to minikube
+      run:
         kubectl apply -f deployment/service.yaml
     - name: Test service URLs
       run: |
