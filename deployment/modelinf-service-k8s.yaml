@@ -5,7 +5,7 @@ metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
   creationTimestamp: "2025-05-29T17:17:31Z"
-  generation: 2
+  generation: 1
   labels:
     app: modelinf-service
   name: modelinf-service
