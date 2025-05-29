@@ -20,10 +20,10 @@ jobs:
         docker images
     - name: Deploy Pods to minikube
       run:
-        kubectl apply -f deployment/deployment.yaml
+        kubectl apply -f deployment/deployment.yml
     - name: Deploy Service to minikube
       run:
-        kubectl apply -f deployment/service.yaml
+        kubectl apply -f deployment/service.yml
     - name: Test service URLs
       run: |
         minikube service list
