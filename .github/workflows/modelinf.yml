@@ -15,7 +15,7 @@ jobs:
       run: |
         export SHELL=/bin/bash
         eval $(minikube -p minikube docker-env)
-        docker build -f ./Dockerfile -t saniya-afree/modelinf-service:latest
+        docker build -f ./ModelInfService/Dockerfile -t saniya-afree/modelinf-service:latest .
         echo -n "verifying images:"
         docker images
     - name: Deploy to minikube
