@@ -5,12 +5,12 @@ FROM python:3.10-slim
 WORKDIR /app
 
 # Copy dependency list and install
-COPY requirements.txt .
+COPY ./ModelInfService/requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy app code
-COPY main.py .
+COPY ./ModelInfService/main.py .
 
 # Expose the default FastAPI port
 EXPOSE 8000
