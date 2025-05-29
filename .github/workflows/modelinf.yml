@@ -15,15 +15,12 @@ jobs:
       run: |
         export SHELL=/bin/bash
         eval $(minikube -p minikube docker-env)
-        docker build -f ./ModelInfService/Dockerfile -t saniya-afreen/modelinf-service:latest .
+        docker build -f ./ModelInfService/Dockerfile -t saniya-afreen/modelinf-service:latest
         echo -n "verifying images:"
         docker images
-    - name: Deploy Pods to minikube
+    - name: Deploy to minikube
       run:
-        kubectl apply -f deployment/deployment.yml
-    - name: Deploy Service to minikube
-      run:
-        kubectl apply -f deployment/service.yml
+        kubectl apply -f deployment/modelinf-service-k8s.yaml
     - name: Test service URLs
       run: |
         minikube service list
