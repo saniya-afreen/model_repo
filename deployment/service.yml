@@ -1,0 +1,34 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2025-05-29T17:32:37Z"
+  labels:
+    app: modelinf-service
+  name: modelinf-service
+  namespace: default
+  resourceVersion: "3205"
+  uid: 1f57a91c-14ce-479f-821d-72b10ae9a880
+spec:
+  clusterIP: 10.109.112.64
+  clusterIPs:
+  - 10.109.112.64
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - nodePort: 32116
+    port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    app: modelinf-service
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}
