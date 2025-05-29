@@ -37,7 +37,7 @@ imagenet_classes = requests.get(LABELS_URL).text.strip().split('\n')
 
 @app.get("/")
 def read_root():
-    return {"Model Inferenece Service is Up!"}
+    return {"Model Inferenece Service is Up!!"}
 
 @app.post("/predict/")
 async def predict(file: UploadFile = File(...)):
