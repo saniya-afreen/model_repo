@@ -1,8 +1,3 @@
-steps:
-- name: start minikube
-  id: minikube
-  uses: medyagh/setup-minikube@latest
-
 name: CI
 on:
   - push
